@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create GradleKT Project"
+  short_description: "Scaffold JDK 25 Gradle Kotlin DSL Java projects"
+  default_prompt: "Use $create-gradlekt-project to scaffold a JDK 25 Gradle Kotlin DSL Java project with Gradle Wrapper."
