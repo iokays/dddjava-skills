@@ -1,0 +1,4 @@
+interface:
+  display_name: "Add Java Devcontainer"
+  short_description: "Add Docker devcontainer config for Java projects"
+  default_prompt: "Use $add-java-devcontainer to add or update a Docker devcontainer for this Java project so it does not rely on a local JDK."

@@ -1,0 +1,22 @@
+{
+  "name": "java-devcontainer",
+  "image": "mcr.microsoft.com/devcontainers/java:25",
+  "remoteUser": "root",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-boot-dev-pack",
+        "vscjava.vscode-gradle"
+      ],
+      "settings": {
+        "java.configuration.updateBuildConfiguration": "automatic"
+      }
+    }
+  },
+  "mounts": [
+    "source=java-gradle-cache,target=/root/.gradle,type=volume"
+  ],
+  "postCreateCommand": "./gradlew --no-daemon test"
+}
