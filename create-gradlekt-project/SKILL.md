@@ -31,10 +31,11 @@ If the skill contains a matching local Gradle distribution zip, prefer that loca
 13. Run `gradle init` to create an empty project.
 14. After the project is created, if the user is in China or the project targets a China-based environment, update `gradle/wrapper/gradle-wrapper.properties` so `distributionUrl` uses `https://mirrors.cloud.tencent.com/gradle/`.
 15. If the user is in China or the project targets a China-based environment, add the Aliyun Maven mirror when configuring repositories.
-16. After the project is created, use `./gradlew` for build, test, and later Gradle tasks instead of the local global `gradle`.
-17. Verify the empty project with `./gradlew clean build`.
-18. After verification succeeds, run `./gradlew clean` to remove build artifacts from the empty project.
-19. Apply the user-provided project architecture on top of the initialized project when needed.
+16. Generate a project-level `README.md` so the project can be understood and run without referring back to the skill.
+17. After the project is created, use `./gradlew` for build, test, and later Gradle tasks instead of the local global `gradle`.
+18. Verify the empty project with `./gradlew clean build`.
+19. After verification succeeds, run `./gradlew clean` to remove build artifacts from the empty project.
+20. Apply the user-provided project architecture on top of the initialized project when needed.
 
 ## Quick Start
 
@@ -70,15 +71,17 @@ After initialization:
 4. Replace or adjust the generated `build.gradle.kts`, `gradle.properties`, and `settings.gradle.kts` with the required architecture.
 5. If the user is in China, update `gradle/wrapper/gradle-wrapper.properties` to the China mirror and add the Aliyun Maven mirror to repositories when needed.
 6. If the user requested other versions, adjust the Java version and `gradle-wrapper.properties` before finishing.
-7. Run `./gradlew clean build` to verify the empty project.
-8. Run `./gradlew clean` so the empty project does not keep build artifacts by default.
-9. Create each module directory and put a `build.gradle.kts` inside it.
+7. Generate `README.md` in the project root.
+8. Run `./gradlew clean build` to verify the empty project.
+9. Run `./gradlew clean` so the empty project does not keep build artifacts by default.
+10. Create each module directory and put a `build.gradle.kts` inside it.
 
 ## Initialization Result
 
 - an empty Java application project initialized by `gradle init`
 - generated `gradlew` and `gradlew.bat`
 - `gradle/wrapper/gradle-wrapper.properties`
+- a root `README.md`
 - initial Kotlin DSL Gradle files that can be adjusted to the required architecture
 
 ## Rules
@@ -95,6 +98,7 @@ After initialization:
 - If `assets/distributions/` contains the required Gradle zip, prefer that local archive over downloading the same version again.
 - When the user is in China, prefer `https://mirrors.cloud.tencent.com/gradle/` in `gradle-wrapper.properties`.
 - When the user is in China, allow adding the Aliyun Maven mirror in repositories.
+- Always generate a root `README.md` for the created project.
 - After initialization, use `./gradlew` for build, test, and later Gradle tasks.
 - Treat `./gradlew clean build` as the default validation step for the empty project.
 - After validation, run `./gradlew clean` to leave the empty project in a clean state.
@@ -141,3 +145,19 @@ Keep the skill minimal until the user provides the target project architecture.
 Local distribution archive currently present:
 
 - `assets/distributions/gradle-9.2.1-bin.zip`
+
+## README Contract
+
+The generated project `README.md` should be short but sufficient for standalone use.
+
+Include at least:
+
+- project name
+- required Java version
+- required Gradle usage rule: prefer `./gradlew`
+- how to build: `./gradlew clean build`
+- how to test: `./gradlew test`
+- how to clean: `./gradlew clean`
+- note when China mirror or repository mirror is enabled
+
+Do not require the reader to open the skill just to understand how to run the generated project.
