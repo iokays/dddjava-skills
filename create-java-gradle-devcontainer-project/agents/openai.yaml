@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Java Gradle Devcontainer Project"
+  short_description: "Create Java Gradle projects from a Docker Dev Container contract"
+  default_prompt: "Use $create-java-gradle-devcontainer-project to create a Java Gradle Kotlin DSL project from a Docker Dev Container contract."
